@@ -1,0 +1,13 @@
+.posts{
+    margin: 10px; 
+    padding: 20px;
+    width: 600px;
+    height: 200px;
+    background-color: blue;
+    border: 1px solid black;
+    box-sizing: border-box; 
+    text-align: center; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}

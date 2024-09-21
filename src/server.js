@@ -7,6 +7,16 @@ const app = express()
 const HOST = 'localhost'
 const PORT = 8000
 
+app.set("view engine", "ejs")
+app.set("views", path.resolve(__dirname, "./templates"))
+
+app.get('/posts', (req, res) => {
+    const context = {
+        posts: [ {name: 'post1', author: 'Author1'}, {name: 'post2', author: 'Author2'} ]
+    }
+
+    res.render("posts", context)
+}) 
 
 function getDate(){
     const moment = require( 'moment' )
@@ -15,7 +25,8 @@ function getDate(){
 app.use("/static/", express.static(path.resolve(__dirname, "./static")))
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./templates/index.html"))
+    res.render("index")
+    // res.sendFile(path.resolve(__dirname, "./templates/index.html"))
 }) 
 
 app.get("/date", (req, res) =>{
