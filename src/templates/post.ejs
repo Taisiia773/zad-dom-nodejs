@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/post.css">
+    <title>Document</title>
+</head>
+<body>
+    <% if (post) { %>
+        <div class="post">
+            <h1>Name: <%= post.name %></h1>
+            <p>Description: <%= post.description %></p>
+            <img src="<%= post.img %>">
+            <p>time: <%= post.time %></p>
+            <p>author: <%= post.author %></p>
+        </div>
+    <% } else { %>
+        <h1>Такого поста не существует.</h1>
+        <a href="<%= /posts/ %>">Вернуться к списку постов</a>
+    <% } %>
+</body>
+</html>
