@@ -1,4 +1,5 @@
-const createButton = document.getElementById("createPostButton")
+
+const createButton = document.getElementById("createPostButton");
 createButton.addEventListener("click", ()=>{
     fetch("http://localhost:8000/post/create", {
         method:"POST",

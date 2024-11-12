@@ -1,14 +1,26 @@
-const express = require('express')
-const path = require("path")
+import express, { Express, Request, Response } from "express";
+import path from "path";
+import cookieParser from "cookie-parser";
+
+import productRouter from "./ProductApp/productRouter"
+import userRouter from "./UserApp/userRouter";
+
+const SECRET_KEY = "vovsemvinovataluda"
 
 const HOST = 'localhost'
 const PORT = 8000
 
-const productRouter = require("./routers/productRouter")
+// const productRouter = require("./routers/productRouter")
 
-const app = express()
+// const app = express()
+const app: Express = express()
+// const path = path()
 
 app.use(express.json())
+
+app.use(cookieParser())
+
+
 
 // устанавливаем шаблонизатор с помощью которого будут рендериться шаблоны (при res.render)
 app.set("view engine", "ejs")
@@ -33,38 +45,14 @@ function getDate(){
 app.use("/static/", express.static(path.resolve(__dirname, "./static")))
 
 app.use("/post/", productRouter)
+// app.use("/", userRouter)
 
-// app.get('/post/:id', (req, res) => {
-//     const id = req.params.id
-//     console.log(id)
-//     const context = {
-//         post:posts[id-1],
-//     }
-
-//     res.render('post', context);
-    
-// })
-
-// app.post("/post/create", (req, res) => {
-//     console.log(req.body);
-//     const post = req.body;
-//     posts.push({
-//         name: post.name,
-//         description: post.description,
-//         time_publicated: post.time_publicated,
-//         author: post.author
-//     });
-
-//     res.send("Post created successfully");
-// });
-
-
-
-app.get('/', (req, res) => {
+app.get("/", (req: Request ,res: Response) => {
     res.render("index")
-}) 
+})
 
-app.get("/date", (req, res) =>{
+
+app.get("/date", (req: Request ,res: Response) =>{
     res.send(getDate())
 })
 

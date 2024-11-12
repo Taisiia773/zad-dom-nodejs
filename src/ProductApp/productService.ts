@@ -1,4 +1,12 @@
-const posts = [
+import productRepository from "./productRepository"
+
+const posts:{
+    id:number,
+    name:string,
+    img:string,
+    description:string,
+    time: string,
+    author: string}[] = [
     {
         id: 1,
         name: 'СУМАТРАНСКИЕ НОСОРОГИ',
@@ -25,27 +33,36 @@ const posts = [
     },
 ]
 
-function getProductById (id) {
+function getProductById (id: number) {
     console.log(id)
     const context = {
         post:posts[id-1],
     }
     return context
 }
-function getAllProducts (max) {
+function getAllProducts (max: number) {
     const context = {
         posts:posts.slice(0, max)
     }
     return context
 }
 
-function createProduct(post) {;
+function createProduct(post: {
+    id: number,
+    name: string,
+    img: string,
+    description: string,
+    time: string,
+    author: string
+}) {
     posts.push(post)
     return "Hello woda"
 }
 
-module.exports = {
-    getProductById: getProductById, 
-    getAllProducts: getAllProducts,
-    createProduct: createProduct 
-}
+// module.exports = {
+//     getProductById: getProductById, 
+//     getAllProducts: getAllProducts,
+//     createProduct: createProduct 
+// }
+
+export default { getProductById, getAllProducts, createProduct };
