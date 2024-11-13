@@ -5,5 +5,7 @@ model Post {
   description String?
   time        String?
   author      String
+  user     User?     @relation(fields: [userId], references: [id])
+  userId Int?
   comments    Comment[]
 }

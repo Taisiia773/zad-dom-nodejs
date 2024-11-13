@@ -5,4 +5,5 @@ model User{
     password String
     role String @default("user") // choices: "user", "dev", "admin"
     posts Post[]
+    comment Comment[]
 }
