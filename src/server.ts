@@ -3,7 +3,7 @@ import path from "path";
 import cookieParser from "cookie-parser";
 
 import productRouter from "./ProductApp/productRouter"
-import userRouter from "./UserApp/userRouter";
+import userRouter from "./UserApp/userRouter"
 
 const SECRET_KEY = "vovsemvinovataluda"
 
@@ -12,8 +12,8 @@ const PORT = 8000
 
 // const productRouter = require("./routers/productRouter")
 
-// const app = express()
-const app: Express = express()
+
+const app = express()
 // const path = path()
 
 app.use(express.json())
@@ -45,7 +45,7 @@ function getDate(){
 app.use("/static/", express.static(path.resolve(__dirname, "./static")))
 
 app.use("/post/", productRouter)
-// app.use("/", userRouter)
+app.use("/", userRouter)
 
 app.get("/", (req: Request ,res: Response) => {
     res.render("index")
