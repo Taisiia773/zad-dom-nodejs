@@ -19,10 +19,12 @@ async function authUser(req:Request, res:Response){
     const user = await userService.authLogin(data.password, data.email)
     if (user.status == "error") {
         res.send(user.message)
+        console.log("error")
     } else if (user.status == "ok") {
         const token = sign(user.user, SECRET_KEY, {expiresIn : "1h"})
         res.cookie("token", token)
         res.sendStatus(200)
+        console.log("login")
     }
 }
 

@@ -2,22 +2,19 @@ import express, { Express, Request, Response } from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 
-import productRouter from "./ProductApp/productRouter"
+import postRouter from "./PostApp/postRouter"
 import userRouter from "./UserApp/userRouter"
+import commentRouter from './CommentApp/commentRouter';
 
-const SECRET_KEY = "vovsemvinovataluda"
 
 const HOST = 'localhost'
 const PORT = 8000
-
-// const productRouter = require("./routers/productRouter")
 
 
 const app = express()
 // const path = path()
 
 app.use(express.json())
-
 app.use(cookieParser())
 
 
@@ -44,8 +41,9 @@ function getDate(){
 // указывая директорию в которой лежат статик файлы (public)
 app.use("/static/", express.static(path.resolve(__dirname, "./static")))
 
-app.use("/post/", productRouter)
+app.use("/post/", postRouter)
 app.use("/", userRouter)
+app.use('/comment/', commentRouter)
 
 app.get("/", (req: Request ,res: Response) => {
     res.render("index")

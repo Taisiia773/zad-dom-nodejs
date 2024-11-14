@@ -3,18 +3,17 @@ import { Prisma } from "@prisma/client"
 
 
 
-async function getProductById(id: number){
+async function getPostById(id: number){
     const post = await client.post.findUnique({
-        where: {
-            id: id
-        }
+        where: {id: id},
+        include:{ comments: true },
     })
     return post
 }
 
 
 
-async function getAllProducts(max?: number){
+async function getAllPosts(max?: number){
     try {
         const posts = await client.post.findMany()
         return posts
@@ -32,7 +31,7 @@ async function getAllProducts(max?: number){
 
 
 
-async function createProduct(data: Prisma.PostCreateInput){
+async function createPost(data: Prisma.PostCreateInput){
     const posts = await client.post.create({
         data: data
     })
@@ -43,10 +42,10 @@ async function createProduct(data: Prisma.PostCreateInput){
 
 
 
-const productRepository = {
-    getProductById, 
-    getAllProducts,
-    createProduct 
+const postRepository = {
+    getAllPosts, 
+    getPostById,
+    createPost 
 }
 
-export default productRepository
+export default postRepository

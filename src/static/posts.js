@@ -1,4 +1,3 @@
-
 const createButton = document.getElementById("createPostButton");
 createButton.addEventListener("click", ()=>{
     fetch("http://localhost:8000/post/create", {
@@ -15,3 +14,4 @@ createButton.addEventListener("click", ()=>{
         }
     })
 })
+

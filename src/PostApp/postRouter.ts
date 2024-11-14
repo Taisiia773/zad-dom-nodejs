@@ -1,5 +1,5 @@
 import express from "express"
-import productControllers from "./productController"
+import postController from "./postController"
 // import { authMiddleware } from "../middlewares/authMiddleware"
 
 
@@ -9,8 +9,8 @@ const router = express.Router()
 
 // Запрос от клиента -> middleware,  -> handler(next)
 
-router.get("/all", productControllers.getAllProducts)
-router.post("/create", productControllers.createProduct)
-router.get("/:id", productControllers.getProductById)
+router.get("/all", postController.getAllPosts)
+router.post("/create", postController.createPost)
+router.get("/:id", postController.getPostById)
 
 export default router

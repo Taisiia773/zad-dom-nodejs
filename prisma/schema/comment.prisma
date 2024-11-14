@@ -2,9 +2,8 @@ model Comment {
   id     Int     @id @default(autoincrement())
   header String
   body   String
-  img    String?
-  Post   Post?   @relation(fields: [postId], references: [id])
-  postId Int?
+  Post   Post   @relation(fields: [postId], references: [id])
+  postId Int
   User   User?   @relation(fields: [userId], references: [id])
   userId Int?
 }

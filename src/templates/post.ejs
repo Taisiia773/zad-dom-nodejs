@@ -13,6 +13,13 @@
             <img src="<%= post.img %>">
             <p>time: <%= post.time %></p>
             <p>author: <%= post.author %></p>
+            <ul>
+                <% post.comment.forEach(comment => { %>
+                <li>
+                  <strong><%= comment.name %></strong>: <%= comment.content %>
+                </li>
+                <% }) %>
+            </ul>
         </div>
     <% } else { %>
         <h1>Такого поста не существует.</h1>

@@ -1,4 +1,4 @@
-import productRepository from "./productRepository"
+import postRepository from "./postRepository"
 
 const posts:{
     id:number,
@@ -33,36 +33,32 @@ const posts:{
     },
 ]
 
-function getProductById (id: number) {
-    console.log(id)
+
+async function getAllPosts (max?: number){
     const context = {
-        post:posts[id-1],
-    }
-    return context
-}
-function getAllProducts (max: number) {
-    const context = {
-        posts:posts.slice(0, max)
+        posts: await postRepository.getAllPosts()
     }
     return context
 }
 
-function createProduct(post: {
+async function getPostById(id: number){
+    const post = await postRepository.getPostById(id);
+    const context = {
+        post
+    }
+    return context
+}
+
+function createPost(post:{
     id: number,
     name: string,
     img: string,
     description: string,
     time: string,
-    author: string
-}) {
+    author: string}){
     posts.push(post)
-    return "Hello woda"
+    return "hello world"
 }
 
-// module.exports = {
-//     getProductById: getProductById, 
-//     getAllProducts: getAllProducts,
-//     createProduct: createProduct 
-// }
 
-export default { getProductById, getAllProducts, createProduct };
+export default { getAllPosts, getPostById, createPost };

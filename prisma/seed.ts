@@ -96,6 +96,7 @@ async function createComment(){
         data: {
             header: 'user',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, consequuntur quaerat, nam non dolorum, iste repellendus repellat illo sint fuga ipsa? Aperiam consectetur non saepe amet culpa excepturi officiis esse?',
+            postId: 1
         }
     })
     console.log(comment)
@@ -108,14 +109,17 @@ async function createComments(){
             {
                 header: 'user1',
                 body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                postId: 1
             },
             {
                 header: 'user2',
                 body: 'Sequi, consequuntur quaerat, nam non dolorum, iste repellendus repellat illo sint fuga ipsa?',
+                postId: 1
             },
             {
                 header: 'user3',
                 body: 'Aperiam consectetur non saepe amet culpa excepturi officiis esse?',
+                postId: 1
             }
         ]
     })
